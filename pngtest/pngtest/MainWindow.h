@@ -3,8 +3,6 @@
 #include "PngUtil.h"
 #include <tchar.h>
 
-class PngUtil;
-
 class MainWindow : public BaseWindow<MainWindow>
 {
 public:

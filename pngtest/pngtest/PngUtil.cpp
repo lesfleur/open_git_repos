@@ -1,5 +1,4 @@
 #include "PngUtil.h"
-#include <vector>
 #include <sstream>
 #include <fstream>
 
@@ -98,7 +97,7 @@ void PngUtil::Load(HWND hWnd, const tstring &fileName, bool isAlpha)
 		{
 			if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS))
 			{
-    			png_set_tRNS_to_alpha(png_ptr);
+				png_set_tRNS_to_alpha(png_ptr);
 			}
 			else if (!(info_ptr->color_type & PNG_COLOR_MASK_ALPHA))
 			{
@@ -108,17 +107,17 @@ void PngUtil::Load(HWND hWnd, const tstring &fileName, bool isAlpha)
 		}
  
 		if (( info_ptr->color_type & PNG_COLOR_MASK_ALPHA ) 
-		     || png_get_valid( png_ptr, info_ptr, PNG_INFO_tRNS ))
+			 || png_get_valid( png_ptr, info_ptr, PNG_INFO_tRNS ))
 		{
-		    if (png_get_bKGD( png_ptr, info_ptr, &image_background ))
+			if (png_get_bKGD( png_ptr, info_ptr, &image_background ))
 			{
-		        png_set_background( png_ptr, image_background, PNG_BACKGROUND_GAMMA_FILE, 1, 1.0 );
-		    }
+				png_set_background( png_ptr, image_background, PNG_BACKGROUND_GAMMA_FILE, 1, 1.0 );
+			}
 			else
 			{
-		        png_color_16 my_background = { 0xff, 0xff, 0xff, 0xff, };
-		        png_set_background( png_ptr, &my_background, PNG_BACKGROUND_GAMMA_SCREEN, 0, 1.0 );
-		    }
+				png_color_16 my_background = { 0xff, 0xff, 0xff, 0xff, };
+				png_set_background( png_ptr, &my_background, PNG_BACKGROUND_GAMMA_SCREEN, 0, 1.0 );
+			}
 		}
 
 		// register and update png settings
@@ -130,7 +129,6 @@ void PngUtil::Load(HWND hWnd, const tstring &fileName, bool isAlpha)
 		int channels = static_cast<int>(png_get_channels(png_ptr, info_ptr));
 
 #ifdef _DEBUG
-		std::string str;
 		std::ostringstream oss;
 		oss << "size: " << width << " x " << height << "\n"
 			<< "bit_depth: " << bit_depth << "\n"
@@ -273,7 +271,7 @@ void PngUtil::CopyImageData(int channels, png_uint_32 height, png_uint_32 width,
 				*dst++ = src[2];  // Blue
 				*dst++ = src[1];  // Green
 				*dst++ = src[0];  // Red
-			    src += 3;
+				src += 3;
 			}
 		}
 		break;

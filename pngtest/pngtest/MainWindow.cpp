@@ -7,8 +7,10 @@ LRESULT MainWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam)
 	switch ( uMsg )
 	{
 	case WM_PAINT:
-		png.Load(hWnd_, "v01.png");
-		return TRUE;
+		{
+			png.Load(hWnd_, "v01.png");
+			return TRUE;
+		}
 
 	case WM_CLOSE:
 		{
