@@ -14,17 +14,17 @@ public:
 		LPARAM lParam );
 	BOOL Create(
 		LPCTSTR lpWindowName,
-        DWORD dwStyle,
-        DWORD dwExStyle = 0,
-        int x = CW_USEDEFAULT,
-        int y = CW_USEDEFAULT,
-        int nWidth = CW_USEDEFAULT,
-        int nHeight = CW_USEDEFAULT,
-        HWND hWndParent = 0,
-        HMENU hMenu = 0 );
+		DWORD dwStyle,
+		DWORD dwExStyle = 0,
+		int x = CW_USEDEFAULT,
+		int y = CW_USEDEFAULT,
+		int nWidth = CW_USEDEFAULT,
+		int nHeight = CW_USEDEFAULT,
+		HWND hWndParent = 0,
+		HMENU hMenu = 0 );
 	HWND Window() const;
 protected:
-	HWND    hWnd_;
+	HWND	hWnd_;
 	virtual LPCTSTR  ClassName() const = 0;
 	virtual LRESULT HandleMessage(
 		UINT uMsg,
@@ -73,14 +73,14 @@ LRESULT CALLBACK BaseWindow<Derived>::WindowProc(
 template<class Derived>
 BOOL BaseWindow<Derived>::Create(
 	LPCTSTR lpWindowName,
-    DWORD dwStyle,
-    DWORD dwExStyle = 0,
-    int x = CW_USEDEFAULT,
-    int y = CW_USEDEFAULT,
-    int nWidth = CW_USEDEFAULT,
-    int nHeight = CW_USEDEFAULT,
-    HWND hWndParent = 0,
-    HMENU hMenu = 0 )
+	DWORD dwStyle,
+	DWORD dwExStyle = 0,
+	int x = CW_USEDEFAULT,
+	int y = CW_USEDEFAULT,
+	int nWidth = CW_USEDEFAULT,
+	int nHeight = CW_USEDEFAULT,
+	HWND hWndParent = 0,
+	HMENU hMenu = 0 )
 {
 	WNDCLASSEX wc = { 0 };
 	// register window procedure
@@ -88,7 +88,7 @@ BOOL BaseWindow<Derived>::Create(
 
 	wc.cbSize = sizeof(WNDCLASSEX);
 	wc.style = CS_HREDRAW | CS_VREDRAW;  
-	wc.hInstance     = GetModuleHandle(NULL);
+	wc.hInstance	 = GetModuleHandle(NULL);
 	wc.lpszClassName = ClassName();
 
 	RegisterClassEx(&wc);

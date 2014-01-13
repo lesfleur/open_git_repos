@@ -3,7 +3,6 @@
 
 LRESULT MainWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	HWND	hWnd = hWnd_;
 	switch ( uMsg )
 	{
 	case WM_PAINT:
